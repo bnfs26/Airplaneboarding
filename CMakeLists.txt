@@ -1,6 +1,9 @@
-cmake_minimum_required(VERSION 4.3)
-project(untitled11)
+cmake_minimum_required(VERSION 4.2.3)
+project(Airplaneboarding)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(untitled11 main.cpp)
+add_executable(Airplaneboarding main.c
+        run_simulation.c
+        run_simulation.h)
+add_executable(run_simulation run_simulation.c run_simulation.h)
