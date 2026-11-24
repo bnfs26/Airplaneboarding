@@ -29,18 +29,23 @@ int main() {
 int* scan_method() {
     char method[MAX_SYMBOLS];
 
+    // Allocating space for a 2d array
     int *plane = (int*)malloc((NUMBER_OF_ROWS * NUMBER_OF_COLUMNS) * sizeof(int));
 
+    // Ask user for boarding method as a .txt file
     printf("Insert Boarding Method file:\n");
     scanf("%s", method);
 
+    // Open file
     FILE *file = fopen(method, "r");
 
+    // Check file for error
     if (file == NULL) {
         printf("Error: Could not open file.\n");
         free(plane);
         exit(EXIT_FAILURE);
     }
+    // Scan individual numbers in file
     for (int i = 0 ; i < NUMBER_OF_ROWS ; i++) {
         for (int j = 0; j < NUMBER_OF_COLUMNS ; j++) {
             fscanf(file, "%d%*[, ]", &plane[i * NUMBER_OF_COLUMNS + j]);
@@ -51,6 +56,7 @@ int* scan_method() {
     return plane;
 }
 
+// print plane/file for testing
 void print_plane(int* plane, int size_of_column, int size_of_row) {
     // read through main array
     for (int i = 0; i < NUMBER_OF_ROWS; i++) {
